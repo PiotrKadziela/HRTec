@@ -6,10 +6,10 @@ use App\Application\RssDataFeedService;
 use App\Validation\CsvCommandValidator;
 use Illuminate\Console\Command;
 
-class SimpleCsv extends Command
+class ExtendedCsv extends Command
 {
-    protected $signature = 'csv:simple {url} {path}';
-    protected $description = 'Export RSS feed data to CSV';
+    protected $signature = 'csv:extended {url} {path}';
+    protected $description = 'Append RSS feed data to CSV';
 
     private RssDataFeedService $rssDataFeedService;
     private CsvCommandValidator $validator;
@@ -29,17 +29,17 @@ class SimpleCsv extends Command
         $path = $this->argument('path');
 
         if (!$this->validator->isUrlValid($url)) {
-            $this->error('Incorrect feed url');
+            $this->error('Incorrect feed url.');
             return;
         }
 
         if (!$this->validator->isCsvFilePathValid($path)) {
-            $this->error('Incorrect file path');
+            $this->error('Incorrect file path.');
             return;
         }
 
         try {
-            $this->rssDataFeedService->exportToCsv($url, $path);
+            $this->rssDataFeedService->appendToCsv($url, $path);
         } catch (\Throwable $exception) {
             $this->error($exception->getMessage());
             return;
