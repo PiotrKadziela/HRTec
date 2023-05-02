@@ -10,7 +10,6 @@
         "laravel/framework": "^10.8",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "sammyk/package-skeleton": "1.0.*",
         "vedmant/laravel-feed-reader": "^1.5"
     },
     "require-dev": {
@@ -19,7 +18,7 @@
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
-        "phpunit/phpunit": "^10.1",
+        "phpunit/phpunit": "9.3.*",
         "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {

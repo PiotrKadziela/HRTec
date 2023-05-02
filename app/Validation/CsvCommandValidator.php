@@ -4,7 +4,12 @@ namespace App\Validation;
 
 class CsvCommandValidator
 {
-    public function isUrlValid(string $url): bool
+    public function validate(array $arguments): bool
+    {
+        return $this->isCsvFilePathValid($arguments['path']) && $this->isUrlValid($arguments['url']);
+    }
+
+    private function isUrlValid(string $url): bool
     {
         return (bool) preg_match(
             '/\b((https?|ftp|file):\/\/|www\.)[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i',
@@ -12,7 +17,7 @@ class CsvCommandValidator
         );
     }
 
-    public function isCsvFilePathValid(string $path): bool
+    private function isCsvFilePathValid(string $path): bool
     {
         return (bool) preg_match(
             '/.csv$/i',

@@ -25,6 +25,7 @@ class RssDataFeedService
     public function exportToCsv(string $url, string $fileName): void
     {
         $feedData = $this->feedDataProvider->getFeedData($url);
+
         $this->csvHelper->export(
             $fileName,
             DataBuilderInterface::CSV_HEADERS,
