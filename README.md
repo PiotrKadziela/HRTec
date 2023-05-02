@@ -13,7 +13,7 @@
     composer install
     ```
 
-## Available command
+## Available commands
 
     php artisan csv:simple [URL] [PATH]
     php artisan csv:extended [URL] [PATH]
